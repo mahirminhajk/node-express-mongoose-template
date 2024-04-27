@@ -25,10 +25,10 @@ export const infoLogger = (message) => {
     infoLog.info(message);
 };
 
-export const errorLogger = (message) => {
+export const errorLogger = (message, stack) => {
     //* append the error message with the uuid
     const errId = generateUUIDv1();
-    message = `🆔 ${errId} ↔ ${message}`;
+    message = `🆔 ${errId} ↔ ${message} \n↔ ${stack}`;
     errLog.error(message);
     return errId;
 };

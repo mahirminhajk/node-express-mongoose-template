@@ -28,13 +28,15 @@ if (process.env.NODE_ENV === 'deployment') {
     app.use(morgan("dev"));
 }
 
+if (process.env.NODE_ENV === 'development') {
+    app.get("/test", (req, res) => {
+        infoLogger("Hello World - this is a information message");
+        const id = errorLogger("Hello World - this is a error message", "This is a stack trace");
+        console.log(id);
+        res.send("Test");
+    });
+}
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
-    infoLogger("Hello World - this is a information message");
-    const id = errorLogger("Hello World - this is a error message");
-    console.log(id);
-});
 
 app.listen(PORT, async () => {
     console.log("Server is running on port 3000 🟢".underline.blue);

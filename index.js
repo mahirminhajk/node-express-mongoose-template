@@ -6,7 +6,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { rateLimit } from 'express-rate-limit'
 import { connectDB } from "./config/index.js";
-import { createErr, errorLogger, infoLogger } from "./utils/index.js";
+import { userRouter } from "./routers/index.js";
 
 dotenv.config();
 
@@ -30,17 +30,19 @@ if (process.env.NODE_ENV === 'deployment') {
 
 if (process.env.NODE_ENV === 'development') {
     app.get("/test", (req, res) => {
-        const id = errorLogger("Hello World - this is a error message", "This is a stack trace");
-        console.log(id);
-        const err = createErr(500, "Hello World - this is a error message", id);
-        res.send(err);
+        // const id = errorLogger("Hello World - this is a error message", "This is a stack trace");
+        // console.log(id);
+        // const err = createErr(500, "Hello World - this is a error message", id);
+        // res.send(err);
+        res.send("Hello World");
     });
 }
 
+//* Routes
+app.use("/api/v1/user", userRouter);
+
 //* Error handler
 app.use((err, req, res, next) => {
-    const errorId = errorLogger(err.message, err.stack);
-    err.id = errorId;
     res.status(500).json(err);
 });
 

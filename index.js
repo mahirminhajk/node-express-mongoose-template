@@ -6,7 +6,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { rateLimit } from 'express-rate-limit'
 import { connectDB } from "./config/index.js";
-import { errorLogger, infoLogger } from "./utils/index.js";
+import { createErr, errorLogger, infoLogger } from "./utils/index.js";
 
 dotenv.config();
 
@@ -30,10 +30,10 @@ if (process.env.NODE_ENV === 'deployment') {
 
 if (process.env.NODE_ENV === 'development') {
     app.get("/test", (req, res) => {
-        infoLogger("Hello World - this is a information message");
         const id = errorLogger("Hello World - this is a error message", "This is a stack trace");
         console.log(id);
-        res.send("Test");
+        const err = createErr(500, "Hello World - this is a error message", id);
+        res.send(err);
     });
 }
 

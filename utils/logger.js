@@ -28,7 +28,7 @@ export const infoLogger = (message) => {
 export const errorLogger = (message, stack) => {
     //* append the error message with the uuid
     const errId = generateUUIDv1();
-    message = `🆔 ${errId} ↔ ${message} \n↔ ${stack}`;
+    message = `🆔 ${errId} ↔ 🔴 ${message} \n↔ 🟡 ${stack}`;
     errLog.error(message);
     return errId;
 };

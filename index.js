@@ -37,6 +37,13 @@ if (process.env.NODE_ENV === 'development') {
     });
 }
 
+//* Error handler
+app.use((err, req, res, next) => {
+    const errorId = errorLogger(err.message, err.stack);
+    err.id = errorId;
+    res.status(500).json(err);
+});
+
 
 app.listen(PORT, async () => {
     console.log("Server is running on port 3000 🟢".underline.blue);

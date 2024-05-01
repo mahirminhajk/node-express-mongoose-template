@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      cache-express:
+        specifier: ^1.0.2
+        version: 1.0.2
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -113,6 +116,10 @@ packages:
   bytes@3.1.2:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
+
+  cache-express@1.0.2:
+    resolution: {integrity: sha512-YL/UxDIkIGjgBXTwtodHEa6JQJ5uXUIsDl+vozOa+RsNh/1n8Sle8ITwJMNL4h0meFOrdnN9d9vFfrnYLhNALw==}
+    engines: {node: '>=16'}
 
   call-bind@1.0.7:
     resolution: {integrity: sha512-GHTSNSYICQ7scH7sZ+M2rFopRoLh8t2bLSW6BbgrtLsahOIB5iyAVJf9GjWK3cYTDaMj4XdBpM1cA6pIS0Kv2w==}
@@ -733,6 +740,8 @@ snapshots:
   bson@6.6.0: {}
 
   bytes@3.1.2: {}
+
+  cache-express@1.0.2: {}
 
   call-bind@1.0.7:
     dependencies:

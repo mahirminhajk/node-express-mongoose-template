@@ -7,6 +7,7 @@ import morgan from "morgan";
 import { rateLimit } from 'express-rate-limit'
 import { connectDB } from "./config/index.js";
 import { userRouter } from "./routers/index.js";
+import createCacheMiddleware from "./middlewares/createCacheMiddleware.js";
 
 dotenv.config();
 
@@ -29,12 +30,20 @@ if (process.env.NODE_ENV === 'deployment') {
 }
 
 if (process.env.NODE_ENV === 'development') {
-    app.get("/test", (req, res) => {
+
+    const cacheMiddleware = createCacheMiddleware();
+
+    app.get("/test", cacheMiddleware, (req, res) => {
         // const id = errorLogger("Hello World - this is a error message", "This is a stack trace");
         // console.log(id);
         // const err = createErr(500, "Hello World - this is a error message", id);
         // res.send(err);
-        res.send("Hello World");
+        //* wati three seconds
+        console.log("hello");
+        //* wait three seconds
+        setTimeout(() => {
+            res.send("world");
+        }, 3000);
     });
 }
 

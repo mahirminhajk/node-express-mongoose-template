@@ -1,0 +1,3 @@
+const cacheMiddleware = createCacheMiddleware();
+
+app.get("/test", cacheMiddleware, (req, res) => {});

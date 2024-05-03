@@ -1,3 +1,5 @@
-import User from "./User.js";
+import AUser from "./AUser";
+import BUser from "./BUser";
+import CUser from "./CUser";
 
-export { User };
+export { AUser, BUser, CUser };

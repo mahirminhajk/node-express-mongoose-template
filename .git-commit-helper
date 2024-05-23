@@ -1,0 +1,10 @@
+# commit message helper
+
+fix: 
+update:
+feat: for new feature
+docs: updating the docs
+style: for code style fix or modify
+refactor: reorganzie directory or file structure
+test: for adding or updating tests
+revert: when reverting a previous commit
